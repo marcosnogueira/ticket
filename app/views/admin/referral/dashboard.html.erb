@@ -1,0 +1,151 @@
+<div id="timeline">
+  <div class="wrapper">
+    <div id="timeline-box"></div><!-- #timeline-box -->
+  </div><!-- .wrapper -->
+</div><!-- #timeline -->
+<script type="text/javascript">
+  var chart;
+  $(document).ready(function() {
+    chart = new Highcharts.Chart({
+      credits: {
+        enabled: false
+      },
+      chart: {
+        backgroundColor: 'transparent',
+        renderTo: 'timeline-box',
+          defaultSeriesType: 'line',
+          marginBottom: 50
+        },
+        title: {
+          text: null
+        },
+        xAxis: {
+          categories: [
+            <% @timeline.each do |tm| %>
+              '<%= tm.first.strftime("%d/%m/%Y") %>'
+              <%= ',' unless tm == @timeline.last %>
+            <% end %>
+          ]
+        },
+        yAxis: {
+          title: {
+              text: null
+           },
+           plotLines: [{
+              value: 0,
+              width: 1,
+              color: '#808080'
+           }]
+        },
+        tooltip: {
+           formatter: function() {
+                     return '<b>'+ this.series.name +'</b><br/>'+
+                 this.x +': '+ this.y +'°C';
+           }
+        },
+        legend: {
+           layout: 'horizontal',
+           align: 'center',
+           verticalAlign: 'bottom',
+           x: 0,
+           y: 0,
+           borderWidth: 0
+        },
+        series: [
+        <% @timeline.each do |tm| %>
+          <% tm.last.group_by(&:hit_data_id).each do |hit_data| %>
+            {
+              name: '<%= HitData.find(hit_data.first).name %>',
+              data: [
+                <%= hit_data.last.size %>
+              ]
+            } <%= ',' unless tm == @timeline.last %>
+          <% end %>
+        <% end %>
+        ]
+     });
+     
+     
+  });
+  </script>
+<div id="stats">
+  <div class="wrapper">
+    <div id="stats-box">
+      <%= render :partial => 'stats_item', :locals => { :items => { :title => 'Click rate', :value => @click_rate.round(2) } } %>
+      <%= render :partial => 'stats_item', :locals => { :items => { :title => 'Share rate', :value => number_to_percentage(@share_rate, :precision => 2, :separator => ',') } } %>
+      <%= render :partial => 'stats_item', :locals => { :items => { :title => 'Viral index', :value => @viral_index.round(2) } } %>
+      <%= render :partial => 'stats_item', :locals => { :items => { :title => 'Viral lift', :value => number_to_percentage(@viral_lift, :delimiter => '.', :separator => ',', :precision => 2) } } %>
+      
+      <div class="sep"></div><!-- .sep -->
+      
+      <% @hits_data.each do |hit_data| %>
+        <%= render :partial => 'stats_item', :locals => { :items => [
+          { :title => "#{hit_data.name} / share", :value => @rates[hit_data.id].first },
+          { :title => "#{hit_data.name} / hit", :value => @rates[hit_data.id].last }
+        ]} %>
+      <% end %>
+      <%= clear %>
+    </div><!-- #stats-box -->
+  </div><!-- .wrapper -->
+</div><!-- #stats -->
+
+<div id="top-items">
+  <div class="wrapper">
+    <div class="top-items">
+      <h2>Top usuários</h2>
+      <% @hits_data.each_with_index do |hit_data, i| %>
+        <div class="item <%= "item-last" if i % 4 == 3 %>">
+          <h3><%= hit_data.name %></h3>
+          <ul>
+            <% @top_users[hit_data.id].each_with_index do |hit, i| %>
+              <li>
+                <span class="pos"><%= i + 1%></span>
+                <%= User.find(hit.first).email %>
+                <span class="value"><%= hit.last.size %></span>
+              </li>
+            <% end %>
+          </ul>
+        </div><!-- .item -->
+      <% end %>
+      <%= clear %>
+    </div><!-- #top-items -->
+    
+    <div class="top-items">
+      <h2>Top sources</h2>
+      <% @hits_data.each_with_index do |hit_data, i| %>
+        <div class="item <%= "item-last" if i % 4 == 3 %>">
+          <h3><%= hit_data.name %></h3>
+          <ul>
+            <% @top_sources[hit_data.id].each_with_index do |source, i| %>
+              <li>
+                <span class="pos"><%= i + 1%></span>
+                <%= Source.find(source.first).domain %>
+                <span class="value"><%= source.last.size %></span>
+              </li>
+            <% end %>
+          </ul>
+        </div><!-- .item -->
+      <% end %>
+      <%= clear %>
+    </div><!-- #top-items -->
+    
+    <div class="top-items">
+      <h2>Top urls</h2>
+      <% @hits_data.each_with_index do |hit_data, i| %>
+        <div class="item <%= "item-last" if i % 4 == 3 %>">
+          <h3><%= hit_data.name %></h3>
+          <ul>
+            <% @top_source_urls[hit_data.id].each_with_index do |source_url, i| %>
+              <li>
+                <span class="pos"><%= i + 1%></span>
+                <%= SourceUrl.find(source_url.first).url %>
+                <span class="value"><%= source_url.last.size %></span>
+              </li>
+            <% end %>
+          </ul>
+        </div><!-- .item -->
+      <% end %>
+      <%= clear %>
+    </div><!-- .top-items -->
+  </div><!-- .wrapper -->
+</div><!-- #top-items -->

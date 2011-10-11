@@ -1,0 +1,40 @@
+/***** general *****/
+  * {
+    word-wrap:break-word;
+  }
+  
+  #general, textarea, input.text, body {
+  	background:#FFF;
+  	color:#000;
+  	font-family: 'Lucida Grande', 'Trebuchet MS', Arial, Geneva, sans-serif;
+  }
+  
+  p {
+    line-height:1.4;
+  }
+  
+  a {
+    color:#3272B3;
+  }
+  a:hover {
+    text-decoration:underline;
+  }
+  
+  body {
+    background:#84C93F;
+  }
+
+  #app {
+    background:#FFF;
+    margin:30px auto;
+    padding:30px;
+    width:900px;
+    
+    box-shadow:0 0 10px rgba(0,0,0, 0.3);
+    
+    border-radius:10px;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+  }
+  
+/***** /general *****/

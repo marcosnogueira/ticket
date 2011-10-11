@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>fileTriggers</key>
+        <dict>
+            <key>routes</key>
+            <string>config\routes.rb</string>
+            <key>share_url</key>
+            <string>app\controllers\share_urls_controller.rb</string>
+            <key>style.css</key>
+            <string>..\arqut\public\stylesheets\style.css</string>
+        </dict>
+    </dict>
+</plist>

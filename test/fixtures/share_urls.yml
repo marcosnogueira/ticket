@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  resource_id: 1
+  class_name: MyString
+  id_base62: MyString
+  share_count: 1
+  hit_count: 1
+
+two:
+  user_id: 1
+  resource_id: 1
+  class_name: MyString
+  id_base62: MyString
+  share_count: 1
+  hit_count: 1

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ticket</title>
+  <%= stylesheet_link_tag 'reset', 'style' %>
+  <%= javascript_include_tag 'jquery-1.6.2', 'jquery.referral', 'application' %>
+  <%= csrf_meta_tag %>
+  
+  <script type="text/javascript">
+    $.referral.init({
+      facebook: {
+        appId: '206193506102746',
+      } //facebook
+    });
+  </script>
+</head>
+<body>
+
+<div id="app">
+  <%= yield %>
+</div><!-- #app -->
+
+</body>
+</html>

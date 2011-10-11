@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Price:</b>
+  <%= @coupon.price %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @coupon.title %>
+</p>
+
+<p>
+  <b>Event:</b>
+  <%= @coupon.event_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_coupon_path(@coupon) %> |
+<%= link_to 'Back', coupons_path %>

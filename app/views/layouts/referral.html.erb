@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Referral Admin</title>
+  <%= stylesheet_link_tag 'reset', 'admin/referral/application' %>
+  <%= javascript_include_tag 'jquery-1.6.2', 'jquery.referral', 'admin/referral/highcharts', 'admin/referral/funnel' %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<div id="app">
+  <div id="header">
+    <div class="wrapper">
+      <h1><span class="text">Referral admin</span></h1>
+    </div><!-- .wrapper -->
+  </div><!-- #header -->
+  <%= yield %>
+</div><!-- #app -->
+
+</body>
+</html>

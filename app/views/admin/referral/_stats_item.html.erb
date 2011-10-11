@@ -1,0 +1,14 @@
+<div class="item">
+  <%
+    unless items.is_a? Array
+      items = [items]
+    end
+  %>
+  <% items.each_with_index do |item, i|%>
+  <div class="item-box <%= "last" if i == items.size - 1 %>">
+    <span class="num"><%= item[:value] %></span>
+    <h3><%= item[:title] %></h3>
+  </div><!-- .item-box -->
+  <% end %>  
+  <%= clear %>
+</div><!-- .item -->
