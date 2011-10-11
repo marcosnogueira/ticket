@@ -6,6 +6,13 @@ class ApplicationController < ActionController::Base
   #Filters
   before_filter :load_referral_config
   
+  def buy
+      
+      track 'comprar'
+      
+      render :text => 'a'
+  end
+  
   
   def cadastro
     track 'cadastro'
@@ -14,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
   
   def track hit_data_name
-    unless false#current_user.blank?
+    if session[:share_url_id_base62] && session[:referer]
       @hit_data = HitData.find_or_create_by_name :name => hit_data_name
       @share_url = ShareUrl.find_by_id_base62 session[:share_url_id_base62]
       @source = Source.find_or_create_by_domain :domain => URI.parse(session[:referer]).host if session[:referer]

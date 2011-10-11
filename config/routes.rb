@@ -16,6 +16,7 @@ Ticket::Application.routes.draw do
   end
     
   match 'cadastro' => 'application#cadastro'
+  match 'buy' => 'application#buy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
