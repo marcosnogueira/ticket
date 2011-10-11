@@ -7,6 +7,7 @@ Ticket::Application.routes.draw do
   match 'share_urls/share' => 'share_urls#share'
   match '/share_urls/not_share' => 'share_urls#not_share'
   match '/referral/visit' => 'admin/referral#visit', :via => :post
+  match '/image_proxy' => 'share_urls#image_proxy'
   
   namespace :admin do
     namespace :referral do

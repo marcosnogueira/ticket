@@ -3,6 +3,7 @@ class ShareUrlsController < ApplicationController
   def share
     @share_url = ShareUrl.find_by_id_base62(params[:id_base62])
     @share_url.increment(:share_count)
+    @share_url.decrement(:view_count)
     @share_url.save
     
     render :nothing => true
@@ -11,6 +12,7 @@ class ShareUrlsController < ApplicationController
   def not_share
     @share_url = ShareUrl.find_by_id_base62(params[:id_base62])
     @share_url.increment(:not_share_count)
+    @share_url.decrement(:view_count)
     @share_url.save
     
     render :nothing => true
@@ -30,6 +32,13 @@ class ShareUrlsController < ApplicationController
         redirect_to eval(value['redirect_url'])
       end
     end
+  end
+  
+  def image_proxy
+    @share_url = ShareUrl.find params[:url].split('l/')[1]
+    @share_url.increment(:view_count).save
+    
+    redirect_to params[:image]
   end
   
 end
