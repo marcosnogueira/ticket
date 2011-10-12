@@ -6,7 +6,7 @@ gem 'rails', '3.0.9'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2', '0.2.6' 
-gem 'rake', '0.8.7'
+#gem 'rake', '0.8.7'
 gem 'devise'
 gem "base62", "~> 0.1.4"
 gem 'rack', '1.2.1'
