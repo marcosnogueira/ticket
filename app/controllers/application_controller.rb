@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
   #Filters
   before_filter :load_referral_config
   
+  def home
+    #@events = Event.where()
+  end
   
   def cadastro
     track 'cadastro'
