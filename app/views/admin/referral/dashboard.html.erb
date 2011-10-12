@@ -21,9 +21,9 @@
         },
         xAxis: {
           categories: [
-            <% @timeline.each do |tm| %>
-              '<%= tm.first.strftime("%d/%m/%Y") %>'
-              <%= ',' unless tm == @timeline.last %>
+            <% @timeline_dates.each_with_index do |date, i| %>
+              '<%= date.created_at.strftime("%d/%m/%Y") %>'
+              <%= ',' unless i == @timeline_dates.size - 1 %>
             <% end %>
           ]
         },
@@ -38,9 +38,8 @@
            }]
         },
         tooltip: {
-           formatter: function() {
-                     return '<b>'+ this.series.name +'</b><br/>'+
-                 this.x +': '+ this.y +'°C';
+          formatter: function() {
+            return '<strong>'+ this.series.name +'</strong><br/>'+ this.x +': '+ this.y;
            }
         },
         legend: {
@@ -51,17 +50,18 @@
            y: 0,
            borderWidth: 0
         },
-        series: [
-        <% @timeline.each do |tm| %>
-          <% tm.last.group_by(&:hit_data_id).each do |hit_data| %>
+        series: [ 
+          <% @hits_data.each do |hit_data| %>
             {
-              name: '<%= HitData.find(hit_data.first).name %>',
+              name: '<%= hit_data.name %>',
               data: [
-                <%= hit_data.last.size %>
+                <% @timeline_dates.each_with_index do |date, i| %>
+                  <%= Hit.count(:conditions => ['hit_data_id = :hit_data_id and DATE(created_at) = :created_at', :hit_data_id => hit_data.id, :created_at => date.created_at]) %>
+                  <%= ',' unless i == @timeline_dates.size - 1 %>
+                <% end %>
               ]
-            } <%= ',' unless tm == @timeline.last %>
+            } <%= ',' unless hit_data == @hits_data.last %>
           <% end %>
-        <% end %>
         ]
      });
      
@@ -205,4 +205,4 @@
       <%= clear %>
     </div><!-- .top-items -->
   </div><!-- .wrapper -->
-</div><!-- #top-items -->
+</div><!-- #top-items --> 

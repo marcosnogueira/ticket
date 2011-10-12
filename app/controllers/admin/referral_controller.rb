@@ -4,7 +4,7 @@ class Admin::ReferralController < Admin::ApplicationController
   def dashboard
     @hits_data = HitData.includes(:hits)
     
-    @timeline = Hit.where('created_at > :one_month_ago', :one_month_ago => (Date.today - 1.month)).order('created_at ASC').all.group_by(&:created_at).to_a
+    @timeline_dates = Hit.two_weeks_ago.select("DISTINCT DATE(created_at) created_at").order('created_at ASC')
     
     @top_users = []
     @top_sources = []
