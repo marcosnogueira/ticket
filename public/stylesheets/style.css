@@ -21,20 +21,240 @@
   }
   
   body {
-    background:#84C93F;
-  }
-
-  #app {
-    background:#FFF;
-    margin:30px auto;
-    padding:30px;
-    width:900px;
-    
-    box-shadow:0 0 10px rgba(0,0,0, 0.3);
-    
-    border-radius:10px;
-    -moz-border-radius:10px;
-    -webkit-border-radius:10px;
+    background:url(/images/body-bg.png) #f1f1f1;
   }
   
+  form {
+    background:#F5f5f5;
+    padding:20px;
+    
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+  }
+  
+  form label {
+    font-weight:bold;
+    font-size:11px;
+    display:block;
+    margin:0 0 3px;
+  }
+  
+  form .field {
+    margin:0 0 20px;
+  }
+  
+  form .actions {
+    margin:20px 0 0 0;
+    padding:20px 0 0 0;
+    border-top:1px #DDD dotted;
+  }
+  
+  input[type=email], input[type=password], input[type=text], textarea, select {
+    border:1px #CCC solid;
+    padding:5px;
+    font-size:13px;
+    
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+  }
+  
+  .wrapper {
+    margin:0 auto;
+    width:960px;
+    position:relative;
+  }
+  
+  #app {
+    font-size:13px;
+  }
+  
+  .btn {
+    background:url(/images/btn-bg.png) bottom repeat-x #95C900;
+    color:#FFF;
+    font-weight:bold;
+    font-size:12px;
+    text-transform:uppercase;
+    padding:10px 15px;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+  }
+  
+  .btn:hover {
+    background:#147300;
+    text-decoration:none;
+  }
+
+  
 /***** /general *****/
+
+
+/***** header *****/
+
+  
+  #app #header {
+    background:url(/images/header-bg.png) repeat-x #F0F0F0 bottom;
+    border-bottom:1px #EEE solid;
+    padding:30px 0;
+    position:relative;
+    z-index:2;
+    box-shadow:0 2px 5px rgba(0,0,0, 0.3);
+  }
+  
+  #app #header #login {
+    position:absolute;
+    top:50%;
+    right:0;
+    margin:-40px 0 0 0;
+  }
+  
+  #app #header #login label {
+    font-size:11px;
+    color:#666;
+    font-weight:bold;
+  }
+  
+  #app #header #login input[type=email], #app #header #login input[type=password] {
+    width:150px;
+  }
+  
+  #app #header #dashboard {
+    position:absolute;
+    top:50%;
+    right:0;
+    margin:-13px 0 0 0;
+  }
+
+
+/***** /header *****/
+
+/***** main *****/
+
+  #app #main {
+    background:#FFF;
+    margin:0 auto;
+    padding:30px;
+    width:900px;
+    position:relative;
+    z-index:1;
+    box-shadow:0 2px 3px rgba(0,0,0, 0.3);
+    
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+  }
+  
+  #app #main h1 {
+    font-size:32px;
+    font-weight:bold;
+    margin:0 0 20px;
+  }
+  
+  #app #main .flash-message {
+    background:#EBFAEB;
+    padding:15px;
+    font-weight:bold;
+    border:2px #B8EDB8 solid;
+    margin:0 0 30px;
+    
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+  }
+/***** /main *****/
+
+/***** eventos *****/
+  #events .event {
+    background:#F8F8F8;
+    border:1px #DDD solid;
+    margin:0 0 20px;
+    padding:30px;
+    position:relative;
+    
+    box-shadow:0 2px 3px rgba(0,0,0, 0.1);
+    
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+  }
+  
+  #events .event h2 {
+    color:#444;
+    font-size:18px;
+    font-weight:bold;
+  }
+  
+  #events .event .coupons {
+    background:#FFf;
+    padding:10px;
+    text-align:center;
+    position:absolute;
+    top:50%;
+    margin:-31px 0 0 0;
+    right:7px;
+    
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+  }
+  #events .event .coupons .coupon-box {
+    float:left;
+    width:130px;
+  }
+  #events .event .coupons .num {
+    font-size:18px;
+    font-weight:bold;
+    display:block;
+  }
+  #events .event .coupons small {
+    font-size:11px;
+    display:block;
+    color:#666;
+  }
+  
+  #events .event .coupons .actions {
+    float:left;
+    width:390px;
+  }
+  
+  #events .event .coupons .actions .buy-btn {
+    float:left;
+    padding:14px 15px;
+  }
+  #events .event .coupons .actions .share {
+    float:left;
+  }
+  #events .event .coupons .actions .share a {
+    margin:0 10px 0 0;
+  }
+/***** /eventos *****/
+
+/***** my coupons *****/
+  #my-coupons {
+    margin:30px 0 0 0;
+    padding:30px 0 0 0;
+    border-top:1px #DDD dotted;
+  }
+  
+  #my-coupons h2 {
+    font-weight:bold;
+    font-size:22px;
+    color:#666;
+    margin:0 0 20px;
+  }
+  
+  #my-coupons .coupon {
+    height:15px;
+    padding:30px;
+    background:#F8f8f8;
+    font-size:16px;
+    font-weight:bold;
+    color:#333;
+    border:2px #DDD dashed;
+    float:left;
+    width:365px;
+    margin:0 20px 20px 0;
+  }
+/***** /my coupons *****/

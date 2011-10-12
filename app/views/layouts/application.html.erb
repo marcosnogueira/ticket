@@ -3,7 +3,7 @@
 <head>
   <title>Ticket</title>
   <%= stylesheet_link_tag 'reset', 'style' %>
-  <%= javascript_include_tag 'jquery-1.6.2', 'jquery.referral', 'application' %>
+  <%= javascript_include_tag 'jquery-1.6.2', 'rails', 'jquery.referral', 'application' %>
   <%= csrf_meta_tag %>
   
   <script type="text/javascript">
@@ -17,7 +17,42 @@
 <body>
 
 <div id="app">
-  <%= yield %>
+  <div id="header">
+    <div class="wrapper">
+      <div id="logo">
+        <%= link_to image_tag('logo.png'), root_url %>
+      </div><!-- #logo -->
+      <% if user_signed_in? %>
+        <div id="dashboard">
+          <p>Olá, <strong><%= current_user.name %></strong>! Você tem <%= pluralize(current_user.coupons.count, 'coupon', 'coupons') %> - <%= link_to 'sair', destroy_user_session_path, :method => :delete %></p>
+        </div><!-- #dashboard -->
+      <% else %>
+        <div id="login">        
+          <%= form_for(User.new, :as => :user, :url => session_path(:user)) do |f| %>
+            <label>Fazer login:</label>
+            <%= f.email_field :email, :placeholder => "E-mail" %>
+            <%= f.password_field :password, :placeholder => "Senha" %>
+            
+            <%= f.submit "Entrar" %>
+            
+            ou 
+            
+            <%= link_to "Cadastre-se", new_registration_path(:user) %>
+          <% end %>
+        </div><!-- #login -->
+      <% end %>
+    </div><!-- .wrapper -->
+  </div><!-- #header -->
+  <div id="main">
+    <% if params[:m] %>
+      <p class="flash-message">
+        <% if params[:m] == '1' %>
+          Compra feita com sucesso
+        <% end %>
+      </p>
+    <% end %>
+    <%= yield %>
+  </div><!-- #main -->
 </div><!-- #app -->
 
 </body>

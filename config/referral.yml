@@ -1,2 +1,2 @@
-Coupon: 
-  redirect_url: 'coupon_path(param)'
+Event: 
+  redirect_url: 'root_url(param)'

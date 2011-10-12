@@ -1,14 +1,19 @@
 Ticket::Application.routes.draw do
-  resources :events
-
+  resources :events do
+    member do
+      post :buy
+    end
+  end
+  
   resources :coupons
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
   
   match 'l/:id_base62' => 'share_urls#hit'
   match 'share_urls/share' => 'share_urls#share'
   match '/share_urls/not_share' => 'share_urls#not_share'
   match '/referral/visit' => 'admin/referral#visit', :via => :post
+  match '/image_proxy' => 'share_urls#image_proxy'
   
   namespace :admin do
     namespace :referral do
@@ -17,6 +22,7 @@ Ticket::Application.routes.draw do
   end
     
   match 'cadastro' => 'application#cadastro'
+  match 'buy' => 'application#buy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

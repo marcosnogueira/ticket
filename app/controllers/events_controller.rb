@@ -1,4 +1,22 @@
 class EventsController < ApplicationController
+
+  def buy
+    @event = Event.find params[:id]
+    ok = false
+    
+    if @event.coupons.available.count > 0
+      @coupon = @event.coupons.available.first
+      @coupon.user_id = current_user.id
+      if @coupon.save
+        track 'compra', @coupon.price
+        ok = true
+      end
+    end
+    
+    redirect_to root_url(:m => 1)
+  end
+
+
   # GET /events
   # GET /events.xml
   def index

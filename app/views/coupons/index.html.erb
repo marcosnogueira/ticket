@@ -27,7 +27,7 @@
       html: 'facebook',
       name: '<%= coupon.title %>',
       link: '<%= share_url(current_user.id, coupon.id, "Coupon") %>',
-      picture: 'http://odrible.com/images/logo.png',
+      picture: 'http://fumsoft.no-ip.org:3000/image_proxy?url=<%= CGI.escape share_url(current_user.id, coupon.id, "Coupon") %>&image=<%= CGI.escape "/images/rails.png" %>',
       caption: 'Aplicativo de teste',
       description: 'Descricao do app'
     });

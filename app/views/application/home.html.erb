@@ -1,3 +1,56 @@
 <div id="events">
-  <%= @events.inspect %>
+  <h1>Eventos</h1>
+  <% @events.each do |event| %>
+    <div class="event">
+      <h2><%= event.name %></h2>
+      <div class="coupons">
+        <div class="coupon-box">
+          <span class="num"><%= event.coupons.available.count %></span>
+          <small>ingressos restantes</small>
+        </div><!-- .coupons-box -->
+        <% if user_signed_in? %>
+          <div class="actions">
+            <span id="share_<%= event.id %>" class="share"></span><!-- #share -->
+            <%= link_to 'Comprar ingresso', buy_event_path(event), :class => 'btn buy-btn', :method => :post, :confirm => "Deseja realmente comprar esse ingresso?" %>
+            
+            <script type="text/javascript">
+              $.referral.facebook.append({
+                appendTo: '#share_<%= event.id %>',
+                html: '<img src="/images/share-facebook.png" alt="Facebook" />',
+                name: 'Compre você também um ingresso para o <%= event.name %>',
+                link: '<%= share_url(current_user.id, event.id, "Event") %>',
+                picture: 'http://odrible.com/images/logo.png',
+                caption: 'TickeToYou',
+                description: 'No TickeToYou você convida seus amigos para comprarem ingresso com você e vocês dois ganham.'
+              });
+              
+              $.referral.twitter.append({
+                appendTo: '#share_<%= event.id %>',
+                html: '<img src="/images/share-twitter.png" alt="Facebook" />',
+                url: '<%= share_url(current_user.id, event.id, "Event") %>',
+                via: 'TickeToYou',
+                text: 'Compre você também um ingresso para o <%= event.name %>'
+              });
+            </script>
+            
+          </div><!-- .actions -->
+        <% end %>
+        <%= clear %>
+      </div><!-- .coupons -->
+    </div><!-- .event -->
+  <% end %>
 </div><!-- #events -->
+
+<% if user_signed_in? %>
+  <div id="my-coupons">
+    <h2>Meus cupons</h2>
+    
+    <% current_user.coupons.each do |coupon| %>
+      <div class="coupon">
+        <h3><%= coupon.event.name %> - <%= coupon.title %></h3>
+      </div><!-- .coupon -->
+    <% end %>
+    
+    <%= clear %>
+  </div><!-- #my-coupons -->
+<% end %>
