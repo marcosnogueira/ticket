@@ -32,8 +32,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: ticket_production
+  database: goalyzer_production
   pool: 5
-  username: root
-  password:
-  host: localhost
+  username: goalyzer
+  password: goa2011
+  host: mysql.goalyzer.com
