@@ -103,7 +103,7 @@ $.fn.referral = {
 $.referral = {
   events: function(){
     $('._referral-facebook-share').live('click', $.referral.facebook.share);
-    $('._referral-twitter-tweet').live('click', $.referral.twitter.tweet);
+    //$('._referral-twitter-tweet').live('click', $.referral.twitter.tweet);
     twttr.events.bind('tweet', $.referral.twitter.track)
   }, //events
   chart: {
@@ -224,27 +224,32 @@ $.referral = {
       return false;
     }, //
     track: function(event){
-      console.log(event.target);
+      var url = '/share_urls/share'
+      var self = $(event.target);
+      var link = self.attr('data-url');
+      
+      $.ajax({
+        type: "PUT",
+        data: { id_base62: link.split('l/')[1] },
+        url: url
+      });
     }, //track
     buildTweetButton: function(options){
-      return '<a \
-        data-url="'+ options.url +'" \
-        data-via="'+ options.via +'" \
-        data-text="'+ options.text +'" \
-      href="javascript:void(0)" class="_referral-twitter-tweet">'+ options.html +'</a>'
+      return '<a href="https://twitter.com/intent/tweet?url='+ encodeURI(options.url) +'&via='+ encodeURI(options.via) +'&text='+ encodeURI(options.text) +'" data-url="'+ options.url +'" class="_referral-twitter-tweet">'+ options.html +'</a>'
     }, //
     append: function(options){
       $.fn.referral.helpers.callWhenIsLoaded(function(){
         $(options.appendTo).append($.referral.twitter.buildTweetButton(options));
       });
       
+      //_referral.twitter.add();
       $.fn.referral.helpers.incrementVisit();
     } //appendTo
   }, //twitter
   init: function(options){
     $.fn.referral.settings = $.extend( true, $.fn.referral.defaults, options );
     
-    var _referral = new $.fn.referral.plugin();
+    window['_referral'] = new $.fn.referral.plugin();
     
     $(function(){
       _referral.facebook.add();

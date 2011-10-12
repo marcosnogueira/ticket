@@ -15,7 +15,6 @@
   </script>
 </head>
 <body>
-
 <div id="app">
   <div id="header">
     <div class="wrapper">
@@ -24,7 +23,7 @@
       </div><!-- #logo -->
       <% if user_signed_in? %>
         <div id="dashboard">
-          <p>Olá, <strong><%= current_user.name %></strong>! Você tem <%= pluralize(current_user.coupons.count, 'coupon', 'coupons') %> - <%= link_to 'sair', destroy_user_session_path, :method => :delete %></p>
+          <p>Olá, <strong><%= current_user.name %></strong>! Você tem <strong><%= pluralize(current_user.coupons.count, 'ingresso', 'ingressos') %></strong> e <strong>R$<%= current_user.credit %> de crédito</strong> - <%= link_to 'sair', destroy_user_session_path, :method => :delete %></p>
         </div><!-- #dashboard -->
       <% else %>
         <div id="login">        

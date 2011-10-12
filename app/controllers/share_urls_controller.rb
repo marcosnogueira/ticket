@@ -24,7 +24,7 @@ class ShareUrlsController < ApplicationController
     @share_url.save
     
     unless current_user && @share_url && current_user.id == @share_url.user_id
-      session[:referer] = request.env['HTTP_REFERER'] if request.env['HTTP_REFERER']
+      session[:referer] = request.env['HTTP_REFERER'] || 'DIRECT'
       session[:share_url_id_base62] = @share_url.id_base62
     end 
     

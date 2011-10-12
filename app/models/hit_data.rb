@@ -21,7 +21,7 @@ class HitData < ActiveRecord::Base
   end
   
   def top_ammount_users
-    hits = self.hits.includes(:user).group_by(&:user_id).sort {|a, b| User.find(b.first).hits.sum(:ammount) <=> Source.find(a.first).hits.sum(:ammount)}
+    hits = self.hits.includes(:user).group_by(&:user_id).sort {|a, b| User.find(b.first).hits.sum(:ammount) <=> User.find(a.first).hits.sum(:ammount)}
     hits.each do |hit|
       hit[1] = User.find(hit.first).hits.sum(:ammount, :conditions => { :hit_data_id => self.id })
     end
@@ -31,6 +31,9 @@ class HitData < ActiveRecord::Base
     total_share = ShareUrl.sum(:share_count).to_f
     total_hit = ShareUrl.sum(:hit_count).to_f
     
-    [(self.hits.count / total_share).round(2), (self.hits.count / total_hit).round(2)]    
+    share = total_share > 0 ? (self.hits.count / total_share) : 0.0
+    hit = total_hit > 0 ? (self.hits.count / total_hit) : 0.0
+    
+    [share.round(2), hit.round(2)]    
   end
 end

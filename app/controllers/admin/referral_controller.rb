@@ -27,13 +27,13 @@ class Admin::ReferralController < Admin::ApplicationController
     end
     
     @visit_count = ReferralStats.first.visit_count
-    @click_rate = ShareUrl.sum(:hit_count).to_f / ShareUrl.sum(:view_count).to_f if ShareUrl.sum(:hit_count).to_f > 0 && ShareUrl.sum(:view_count).to_f > 0
+    @click_rate = ShareUrl.sum(:hit_count).to_f / ShareUrl.sum(:share_count).to_f if ShareUrl.sum(:hit_count).to_f > 0 && ShareUrl.sum(:share_count).to_f > 0
     @share_rate = (ShareUrl.count(:conditions => 'share_count > 0 or hit_count > 0').to_f / @visit_count.to_f)
     @viral_index = @click_rate * @share_rate    
     @viral_lift = @share_rate * @click_rate * (HitData.find_by_name("cadastro").hits.count.to_f / ShareUrl.count(:conditions => 'share_count > 0 or hit_count > 0').to_f) if HitData.find_by_name("cadastro")
     
     #tratamento para views
-    @click_rate = @click_rate * 100
+    #@click_rate = @click_rate * 100
     @share_rate = @share_rate * 100
     
   end

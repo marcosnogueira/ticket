@@ -71,7 +71,7 @@
 <div id="stats">
   <div class="wrapper">
     <div id="stats-box">
-      <%= render :partial => 'stats_item', :locals => { :items => { :title => 'Click rate', :value => number_to_percentage(@click_rate, :precision => 2, :separator => ',') } } %>
+      <%= render :partial => 'stats_item', :locals => { :items => { :title => 'Click rate', :value => @click_rate } } %>
       <%= render :partial => 'stats_item', :locals => { :items => { :title => 'Share rate', :value => number_to_percentage(@share_rate, :precision => 2, :separator => ',') } } %>
       <%= render :partial => 'stats_item', :locals => { :items => { :title => 'Viral index', :value => @viral_index.round(2) } } %>
       <%= render :partial => 'stats_item', :locals => { :items => { :title => 'Viral lift', :value => number_to_percentage(@viral_lift, :delimiter => '.', :separator => ',', :precision => 2) } } %>
@@ -96,7 +96,10 @@
       <% @hits_data.each_with_index do |hit_data, i| %>
         <% if hit_data.hits.sum(:ammount) > 0 %>
           <div class="item <%= "item-last" if i % 4 == 3 %>">
-            <h3><%= hit_data.name %></h3>
+            <h3>
+              <%= hit_data.name %>
+              <span class="value"><%= hit_data.hits.sum(:ammount) %></span>
+            </h3>
             <ul>
               <% @top_ammount_users[hit_data.id].each_with_index do |hit, i| %>
                 <li class="<%= "last" if hit == @top_ammount_users[hit_data.id].last %>">
@@ -116,7 +119,10 @@
       <h2>Top usuários</h2>
       <% @hits_data.each_with_index do |hit_data, i| %>
         <div class="item <%= "item-last" if i % 4 == 3 %>">
-          <h3><%= hit_data.name %></h3>
+          <h3>
+            <%= hit_data.name %>
+            <span class="value"><%= hit_data.hits.count %></span>
+          </h3>
           <ul>
             <% @top_users[hit_data.id].each_with_index do |hit, i| %>
               <li class="<%= "last" if hit == @top_users[hit_data.id].last %>">
@@ -136,7 +142,10 @@
       <% @hits_data.each_with_index do |hit_data, i| %>
         <% if hit_data.hits.sum(:ammount) > 0 %>
           <div class="item <%= "item-last" if i % 4 == 3 %>">
-            <h3><%= hit_data.name %></h3>
+            <h3>
+              <%= hit_data.name %>
+              <span class="value"><%= hit_data.hits.sum(:ammount) %></span>
+            </h3>
             <ul>
               <% @top_ammount_sources[hit_data.id].each_with_index do |hit, i| %>
                 <li class="<%= "last" if hit == @top_ammount_sources[hit_data.id].last %>">
@@ -156,7 +165,10 @@
       <h2>Top sources</h2>
       <% @hits_data.each_with_index do |hit_data, i| %>
         <div class="item <%= "item-last" if i % 4 == 3 %>">
-          <h3><%= hit_data.name %></h3>
+          <h3>
+            <%= hit_data.name %>
+            <span class="value"><%= hit_data.hits.count %></span>
+          </h3>
           <ul>
             <% @top_sources[hit_data.id].each_with_index do |source, i| %>
               <li class="<%= "last" if source == @top_sources[hit_data.id].last %>">
@@ -175,7 +187,10 @@
       <h2>Top urls</h2>
       <% @hits_data.each_with_index do |hit_data, i| %>
         <div class="item <%= "item-last" if i % 4 == 3 %>">
-          <h3><%= hit_data.name %></h3>
+          <h3>
+            <%= hit_data.name %>
+            <span class="value"><%= hit_data.hits.count %></span>
+          </h3>
           <ul>
             <% @top_source_urls[hit_data.id].each_with_index do |source_url, i| %>
               <li class="<%= "last" if source_url == @top_source_urls[hit_data.id].last %>">

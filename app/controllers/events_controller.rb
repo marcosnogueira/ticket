@@ -8,7 +8,16 @@ class EventsController < ApplicationController
       @coupon = @event.coupons.available.first
       @coupon.user_id = current_user.id
       if @coupon.save
+        #dar credito
+        @share_url = ShareUrl.find_by_id_base62 session[:share_url_id_base62]
+        if @share_url
+          @user_source = User.find @share_url.user_id
+          @user_source.credit = @user_source.credit + 5
+          @user_source.save
+        end
+        
         track 'compra', @coupon.price
+        
         ok = true
       end
     end

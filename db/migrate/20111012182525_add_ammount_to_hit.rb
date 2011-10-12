@@ -4,6 +4,6 @@ class AddAmmountToHit < ActiveRecord::Migration
   end
 
   def self.down
-    add_column :hits, :ammount
+    remove_column :hits, :ammount
   end
 end
