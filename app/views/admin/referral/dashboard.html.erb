@@ -56,7 +56,7 @@
               name: '<%= hit_data.name %>',
               data: [
                 <% @timeline_dates.each_with_index do |date, i| %>
-                  <%= Hit.count(:conditions => ['hit_data_id = :hit_data_id and DATE(created_at) = :created_at', :hit_data_id => hit_data.id, :created_at => date.created_at]) %>
+                  <%= Hit.count(:conditions => ['hit_data_id = :hit_data_id and DATE(created_at) = :created_at', {:hit_data_id => hit_data.id, :created_at => date.created_at}]) %>
                   <%= ',' unless i == @timeline_dates.size - 1 %>
                 <% end %>
               ]
