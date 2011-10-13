@@ -19,7 +19,7 @@
                 html: '<img src="/images/share-facebook.png" alt="Facebook" />',
                 name: 'Compre você também um ingresso para o <%= event.name %>',
                 link: '<%= share_url(current_user.id, event.id, "Event") %>',
-                picture: 'http://odrible.com/images/logo.png',
+                picture: '<%= root_url %>images/thumb.png',
                 caption: 'TickeToYou',
                 description: 'No TickeToYou você convida seus amigos para comprarem ingresso com você e vocês dois ganham.'
               });
