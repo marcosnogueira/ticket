@@ -1,4 +1,4 @@
-class Admin::ReferralController < Admin::ApplicationController
+class Admin::ReferralController < ApplicationController
   layout 'referral'
   
   def dashboard
