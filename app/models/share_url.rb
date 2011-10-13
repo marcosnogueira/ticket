@@ -6,7 +6,7 @@ class ShareUrl < ActiveRecord::Base
   belongs_to :user
   
   def url
-    "#{Rails.application.routes.url_helpers.root_url(:host => 'facebook.local:3000')}l/#{self.id_base62}"
+    "#{Rails.application.routes.url_helpers.root_url(:host => 'goalyzer.com')}l/#{self.id_base62}"
   end
   
   private
