@@ -1,3 +1,3 @@
-class AdminController < ApplicationController
+class AdminController < BaseController
   
 end
