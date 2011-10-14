@@ -1,4 +1,4 @@
-set :user, 'goalyzer'  # Your dreamhost account's username
+set :user, 'goalyzer3'  # Your dreamhost account's username
 set :domain, 'goalyzer.com'  # Dreamhost servername where your account is located 
 set :project, 'goalyzer.com'  # Your application as its called in the repository
 set :application, 'goalyzer.com'  # Your app's location (domain or sub-domain name as setup in panel)
