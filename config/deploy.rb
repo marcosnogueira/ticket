@@ -1,4 +1,4 @@
-set :user, 'goalyzer3'  # Your dreamhost account's username
+set :user, 'marcosnogueiraalves'  # Your dreamhost account's username
 set :domain, 'goalyzer.com'  # Dreamhost servername where your account is located 
 set :project, 'goalyzer.com'  # Your application as its called in the repository
 set :application, 'goalyzer.com'  # Your app's location (domain or sub-domain name as setup in panel)
@@ -37,8 +37,7 @@ namespace :deploy do
   end
   
   task :after_update_code  do
-    #run "cp #{shared_path}/database.yml #{release_path}/config/."
-    #run "ln -nfs #{shared_path}/system #{release_path}/public/system"
+
   end
   
 end
