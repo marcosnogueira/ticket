@@ -37,7 +37,7 @@ namespace :deploy do
   end
   
   task :after_update_code  do
-    run "bundle install"
+
   end
   
 end
