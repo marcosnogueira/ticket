@@ -1,6 +1,6 @@
 class CreateHitData < ActiveRecord::Migration
   def self.up
-    create_table :hit_data do |t|
+    create_table :hit_datas do |t|
       t.string :name
 
       t.timestamps
@@ -8,6 +8,6 @@ class CreateHitData < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :hit_data
+    drop_table :hit_datas
   end
 end
