@@ -1,7 +1,7 @@
 body {
-  background:#202020;
-  color:#FCFCFC;
-  text-shadow:0 -1px 0 #000;
+  background:#F5F5F5;
+  color:#444;
+  text-shadow:0 1px 0 #FFF;
   font-family: 'Lucida Grande', Tahoma, Arial, Verdana;
   font-size:13px;
 }
@@ -20,22 +20,28 @@ body {
 }
 
 /***** header *****/
+  #header {
+    padding:30px;
+    background:#F9f9F9;
+    margin:10px 0 30px 0;
+    
+    box-shadow:0 0 5px #CCC;
+    
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+  }
   #header h1 {
-    color:#FFF;
+    color:#222;
     font-weight:bold;
     font-size:32px;
-    margin:50px 0 50px;
   }
-  
-  #header h1 .text {
-    padding:0 100px 0 0;
-    border-bottom:5px #060606 solid;
-  }
+
 /***** /header *****/
 
 /***** timeline *****/
   #timeline {
-    border-bottom:5px #000 solid;
+    border-bottom:3px #E5E5E5 solid;
   }
   #timeline-box {
     height:250px;
@@ -45,14 +51,14 @@ body {
 
 /***** stats *****/
   #stats {
-    background:#151515;
-    border-bottom:2px #111 dotted;
+    background:#E9E9E9;
+    border-bottom:2px #DDD dotted;
     padding:30px 0 30px 0;
   }
   
   #stats #stats-box {
-    background:#050505;
-    border:2px #000 solid;
+    background:#F5F5F5;
+    border:2px #FCFCFC solid;
     padding:5px;
     
     border-radius:5px;
@@ -61,7 +67,9 @@ body {
   }
   
   #stats .item {
-    background:#222;
+    color:#222;
+    background:#E7E7E7;
+    border:1px #DDD solid;
     padding:15px 20px;
     float:left;
     text-align:center;
@@ -74,8 +82,8 @@ body {
   
   #stats .sep {
     float:left;
-    border-right:2px #000 solid;
-    border-left:2px #151515 solid;
+    border-right:1px #EEE solid;
+    border-left:1px #FCFCFC solid;
     margin:-5px 15px -5px 10px;
     height:77px;
   }
@@ -87,7 +95,7 @@ body {
   #stats .item .item-box{
     margin:0 15px 0 0;
     padding:0 15px 0 0;
-    border-right:1px #333 dotted;
+    border-right:1px #CCC dotted;
   }
   
   #stats .item .item-box.last {
@@ -116,27 +124,28 @@ body {
 
 /***** top items *****/ 
   #top-items {
-    background:#151515;
+    background:#E9E9E9;
     padding:30px 0;
   }
   
   .top-items {
-    margin:0 0 20px;
-    padding:0 0 20px;
-    border-bottom:2px #000 dotted;
+    margin:0 0 30px;
+    padding:0 0 30px;
+    border-bottom:1px #DDD solid;
   }
   
   .top-items h2 {
     font-size:18px;
     font-weight:bold;
-    color:#CCC;
+    color:#666;
     margin:0 0 15px;
     text-transform:lowercase;
   }
   
   .top-items .item {
-    background:#000;
-    padding:2px;
+    background:#E1E1e1;
+    padding:3px;
+    border:2px #F9f9f9 solid;
     width:221px;
     float:left;
     margin:0 20px 0 0;
@@ -151,9 +160,9 @@ body {
   }
   
   .top-items .item h3 {
-    background:#090909;
+    background:#F1F1F1;
     padding:10px;
-    color:#999;
+    color:#444;
     position:relative;
     
     border-radius:5px 5px 0 0;
@@ -162,8 +171,8 @@ body {
   }
   
   .top-items .item h3 .value {
-    background:#333;
-    color:#CCC;
+    background:#F9f9F9;
+    color:#666;
     font-weight:bold;
     padding:5px 8px;
     font-size:13px;
@@ -172,9 +181,9 @@ body {
     right:9px;
     z-index:1;
     margin:-13px 0 0 0;
-    border-bottom:2px #000 solid;
+    border-bottom:2px #D1D1D1 solid;
     
-    text-shadow:0 -1px 0 #000;
+    text-shadow:0 1px 0 #FFF;
     
     border-radius:100%;
     -webkit-border-radius:100%;
@@ -183,7 +192,9 @@ body {
   
   .top-items .item li {
     padding:15px 45px 15px 30px;
-    background:#222;
+    color:#111;
+    font-weight:bold;
+    background:#F6f6f6;
     font-size:11px;
     position:relative;
     margin:0 0 1px;
@@ -198,18 +209,17 @@ body {
   }
   
   .top-items .item li .pos {
-    color:#666;
+    color:#999;
     font-size:14px;
     position:absolute;
-    font-weight:bold;
     top:50%;
     left:11px;
     margin:-7px 0 0 0;
   }
   
   .top-items .item li .value {
-    background:#777;
-    color:#000;
+    background:#FFF;
+    color:#333;
     font-weight:bold;
     padding:5px 8px;
     font-size:13px;
@@ -218,9 +228,9 @@ body {
     right:9px;
     z-index:1;
     margin:-13px 0 0 0;
-    border-bottom:2px #060606 solid;
+    border-bottom:1px #DDD solid;
     
-    text-shadow:0 1px 0 #777;
+    text-shadow:0 1px 0 #F9f9f9;
     
     border-radius:100%;
     -webkit-border-radius:100%;
